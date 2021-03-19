@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <title>VRCアバターをリグいじらずに上下させる計算機</title>
+    <script type="text/javascript">
+      function calc() {
+        let dy = parseFloat(document.getElementById('dy').value);
+        let hy = parseFloat(document.getElementById('hy').value);
+        let rs = parseFloat(document.getElementById('rs').value);
+        let hs = parseFloat(document.getElementById('hs').value);
+        let r = 1+dy/hy;
+        document.getElementById('rrs').value = `${Math.round(rs*r*100000)/100000}`;
+        document.getElementById('rhs').value = `${Math.round(hs/r*100000)/100000}`;
+      }
+    </script>
+  </head>
+  <body>
+    <h2>VRCアバターをリグいじらずに上下させる計算機</h2>
+    HipsのグローバルY座標の調べ方：HipsボーンをCtrl+Dで複製してシーンのルートに移動したもののY座標を調べる<br/>
+    <br/>
+    <form>
+      <table>
+        <tr>
+          <td>持ち上げる高さ</td>
+          <td><input type="text" id="dy" value="0" /></td>
+        </tr>
+        <tr>
+          <td>HipsのグローバルY座標</td>
+          <td><input type="text" id="hy" value="0.7" /></td>
+        </tr>
+        <tr>
+          <td>元のアバタールートスケール</td>
+          <td><input type="text" id="rs" value="1" /></td>
+        </tr>
+        <tr>
+          <td>元のHipsスケール</td>
+          <td><input type="text" id="hs" value="1" /></td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align:center">
+            　<br/>
+            <input type="button" value="↓　↓　↓　計　算　↓　↓　↓" onclick="calc()" /><br/>
+            　<br/>
+          </td>
+        </tr>
+        <tr>
+          <td>変更後のアバタールートスケール</td>
+          <td><input type="text" id="rrs" value="" readonly /></td>
+        </tr>
+        <tr>
+          <td>変更後のHipsスケール</td>
+          <td><input type="text" id="rhs" value="" readonly /></td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
